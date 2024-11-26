@@ -1,0 +1,28 @@
+services:
+  wildfly:
+    build:
+      context: .
+      dockerfile: ./docker/wildfly/Dockerfile
+    container_name: wildfly
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+      - "8787:8787"
+    command: ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0", "-c", "standalone-full.xml"]
+    depends_on:
+      - timescaledb
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg17
+    container_name: timescaledb
+    environment:
+      POSTGRES_DB: device_history
+      POSTGRES_USER: historian
+      POSTGRES_PASSWORD: historian1234!
+    ports:
+      - "5432:5432"
+    volumes:
+      - timescale_data:/var/lib/postgresql/data
+
+volumes:
+  timescale_data:
