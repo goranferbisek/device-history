@@ -12,7 +12,7 @@ public class DeviceResource {
 
 	@POST
 	public Response collectData(Device device) {
-		logger.info("Device data collected: " + device);
+		logger.info("Device data collected for device: " + device.getDeviceId());
 		return Response.ok().build();
 	}
 
