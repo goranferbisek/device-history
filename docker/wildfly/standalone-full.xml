@@ -138,7 +138,7 @@
                     <security user-name="sa" password="sa"/>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/PostgresDS" pool-name="PostgresDS" enabled="true" use-java-context="true" statistics-enabled="true">
-                    <connection-url>jdbc:postgresql://timescaledb:5432/device-history</connection-url>
+                    <connection-url>jdbc:postgresql://timescaledb:5432/device_history</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql-42.7.3.jar</driver>
                     <security user-name="historian" password="historian1234!"/>
